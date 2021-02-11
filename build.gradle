@@ -3,11 +3,20 @@ plugins {
 }
 
 group 'com.atomicprogramming'
-version '1.0-SNAPSHOT'
+version '1.0.0'
 
 repositories {
     mavenCentral()
     jcenter()
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "com.atomicprogramming.StatsBot.Bot"
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 
 dependencies {
