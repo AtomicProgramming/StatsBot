@@ -2,6 +2,7 @@ package com.atomicprogramming.StatsBot;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.Activity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,7 +43,8 @@ public class Bot {
             System.exit(1);
         }
         try {
-            JDA jda = JDABuilder.createDefault(token).build();
+            JDA jda = JDABuilder.createDefault(token)
+                    .setActivity(Activity.playing("Stats Bot | Version 1.0.0")).build();
         }
         catch (LoginException error) {
             logger.error("Invalid or non-existent token!");
